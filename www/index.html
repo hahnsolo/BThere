@@ -10,15 +10,14 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-        
         document.addEventListener("deviceready", onDeviceReady, false);
 
         function onDeviceReady() {
-			var list = [];
+            var list = [];
             var kills;
             list.push("11111");
-			
-			bluetoothle.initialize(initializeSuccess, initializeError, {
+
+            bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
                 "statusReceiver": false
             });
@@ -30,55 +29,53 @@
             function initializeError() {
                 alert("initialize broken");
             }
-			
-			function stopScanSuccess(){
+
+            function stopScanSuccess() {
                 alert("stop scan success");
-				//var jsonString = JSON.stringify(list);
-				var email = window.localStorage.getItem("BThereEmail");
-				
-				$.ajax({
-					type: "POST",
-					url: "http://www.greenseedmusic.com/btherecheckin.php",
+                //var jsonString = JSON.stringify(list);
+                var email = window.localStorage.getItem("BThereEmail");
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://www.greenseedmusic.com/btherecheckin.php",
                     data: {
                         email: email,
                         locArr: list
                     },
                     success: function (data) {
-						alert(JSON.parse(data));
+                        alert(JSON.parse(data));
                     },
                     error: function (data) {
-						alert("error");
+                        alert("error");
                     }
-				});
-               clearTimeout(kills);
-               
+                });
             }
-                        
-            function stopScanError(){
+
+            function stopScanError() {
                 alert("Never Dieing");
             }
-			
-			function startScanSuccess(obj) {
+
+            function startScanSuccess(obj) {
                 alert("Scanning");
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                 }
-                  alert("AfterScanning");  
-                myVar = setTimeout(function(){alert("called kill");bluetoothle.stopScan(stopScanSuccess, stopScanError)},5000);
+                alert("AfterScanning");
+
             }
-			
-			function startScanError() {
+
+            function startScanError() {
                 alert("not hello");
             }
 
             document.getElementById("join").addEventListener("click", join);
-			//CheckIn -- add the Event Listener.
-			document.getElementById("checkin").addEventListener("click", checkin);
+            //CheckIn -- add the Event Listener.
+            document.getElementById("checkin").addEventListener("click", checkin);
 
             if (window.localStorage.getItem("BThere") == "true") {
-				
 
-				var email = window.localStorage.getItem("BThereEmail");
+
+                var email = window.localStorage.getItem("BThereEmail");
                 var password = window.localStorage.getItem("BTherePassword");
 
                 $.ajax({
@@ -90,19 +87,17 @@
                         password: password
                     },
                     success: function (data) {
-						alert(data);
-						var buttons = document.getElementById("checkinsection");
+                        alert(data);
+                        var buttons = document.getElementById("checkinsection");
                         buttons.style.display = "block";
                     },
-                    error: function (data) {
-                                            }
+                    error: function (data) {}
                 });
+            } else {
+
+                var buttons = document.getElementById("buttons");
+                buttons.style.display = "block";
             }
-			else{
-			
-			var buttons = document.getElementById("buttons");
-			buttons.style.display = "block";
-			}
 
 
 
@@ -126,15 +121,21 @@
                 buttons.style.display = "block";
 
             }
-			
-			//This code will execute when the Check-In button is clicked.
-			function checkin(){
+
+            //This code will execute when the Check-In button is clicked.
+            function checkin() {
                 alert("Checkedin");
-				kills = setTimeout(function(){ bluetoothle.startScan(startScanSuccess, startScanError, {
-                    "serviceUuids": []
-                }); },100);
-				
-			}
+                kills = setTimeout(function () {
+                    bluetoothle.startScan(startScanSuccess, startScanError, {
+                        "serviceUuids": []
+                    });
+                }, 1000);
+
+                myVar = setTimeout(function () {clearTimeout(kills);;
+                    bluetoothle.stopScan(stopScanSuccess, stopScanError)
+                }, 5000);
+
+            }
         }
     </script>
 </head>
@@ -165,10 +166,10 @@
         </form>
     </section>
 
-	<!-- Check-In Button Section -->
-	<section id="checkinsection" style="margin-top:25%; height:50%; display:none;">
-		<button class="button--large--cta" id="checkin">Check In</button>
-	</section>
+    <!-- Check-In Button Section -->
+    <section id="checkinsection" style="margin-top:25%; height:50%; display:none;">
+        <button class="button--large--cta" id="checkin">Check In</button>
+    </section>
 </body>
 
 </html>
