@@ -63,8 +63,8 @@
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                 }
-                    
-                myVar = setTimeout(function(){bluetoothle.stopScan(stopScanSuccess, stopScanError)},5000);
+                  alert("AfterScanning");  
+                myVar = setTimeout(function(){alert("called kill");bluetoothle.stopScan(stopScanSuccess, stopScanError)},5000);
             }
 			
 			function startScanError() {
