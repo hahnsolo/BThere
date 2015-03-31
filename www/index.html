@@ -130,9 +130,9 @@
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
                     });
-                }, 1000);
+                }, 500);
 
-                myVar = setTimeout(function () {clearTimeout(kills);;
+                myVar = setTimeout(function () {clearTimeout(kills);
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 5000);
 
