@@ -126,12 +126,10 @@
             //This code will execute when the Check-In button is clicked.
             function checkin() {
                 alert("Checkedin");
-                kills = setTimeout(function () {
-                    
                      myVar = setTimeout(function () {alert("kill called");
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 6000);
-                    
+                kills = setTimeout(function () {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
                     });
