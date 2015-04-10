@@ -57,7 +57,7 @@
             }
 
             function startScanSuccess(obj) {
-                myVar = setTimeout(function () {alert("kill called");
+                myVar = setTimeout(function () {clearTimeout(kills);
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 6000);
                 
