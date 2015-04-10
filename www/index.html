@@ -56,7 +56,7 @@
             }
 
             function startScanSuccess(obj) {
-               
+               alert("scanning time");
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                     alert(obj.name);
@@ -78,8 +78,6 @@
             document.getElementById("checkin").addEventListener("click", checkin);
 
             if (window.localStorage.getItem("BThere") == "true") {
-
-
                 var email = window.localStorage.getItem("BThereEmail");
                 var password = window.localStorage.getItem("BTherePassword");
 
