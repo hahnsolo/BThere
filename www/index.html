@@ -14,7 +14,7 @@
 
         function onDeviceReady() {
             var list = [];
-            var x =0;
+            var theCount =0;
            
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
@@ -56,13 +56,13 @@
             }
 
             function startScanSuccess(obj) {
-               alert("scanning time");
+               alert("scanning time "+theCount);
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                     alert(obj.name);
                 }
-                x++;
-                if(X == 5){
+                theCount +=1;
+                if(theCount == 5){
                     alert("scannerd 5 time");
                     bluetoothle.stopScan(stopScanSuccess, stopScanError);
                 }
