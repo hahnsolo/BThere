@@ -62,7 +62,7 @@
                     alert(obj.name);
                 }
                 theCount +=1;
-                if(theCount == 5){
+                if(theCount > 5){
                     alert("scannerd 5 time");
                     bluetoothle.stopScan(stopScanSuccess, stopScanError);
                 }
