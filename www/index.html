@@ -46,8 +46,7 @@
                 }
                 theCount +=1;
                 if(theCount > 5){
-                    alert("scannerd 5 time");
-                    bluetoothle.stopScan(stopScanSuccess, stopScanError);
+                    Return;
                 }
 
             }
@@ -116,6 +115,7 @@
                         "serviceUuids": []
                     });
                 }, 500);
+                bluetoothle.stopScan(stopScanSuccess, stopScanError);
 
                
 
