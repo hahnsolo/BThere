@@ -32,27 +32,10 @@
 
             function stopScanSuccess() {
                 alert("exiting");
-                //var jsonString = JSON.stringify(list);
-                var email = window.localStorage.getItem("BThereEmail");
-
-                $.ajax({
-                    type: "POST",
-                    url: "http://www.greenseedmusic.com/btherecheckin.php",
-                    data: {
-                        email: email,
-                        locArr: list
-                    },
-                    success: function (data) {
-                        alert(JSON.parse(data));
-                    },
-                    error: function (data) {
-                      
-                    }
-                });
             }
 
             function stopScanError() {
- alert("exiting fail");
+                alert("exiting fail");
             }
 
             function startScanSuccess(obj) {
