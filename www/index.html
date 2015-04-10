@@ -34,7 +34,7 @@
             function stopScanSuccess() {
                 //var jsonString = JSON.stringify(list);
                 var email = window.localStorage.getItem("BThereEmail");
-               
+                alert("dead");
                 $.ajax({
                     type: "POST",
                     url: "http://www.greenseedmusic.com/btherecheckin.php",
@@ -63,6 +63,7 @@
 
                 if (obj.name == "CoffeeLoft") {
                     list=obj.name;
+                    alert("in loft");
                 }
             
 
