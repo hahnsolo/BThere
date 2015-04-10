@@ -13,9 +13,10 @@
         document.addEventListener("deviceready", onDeviceReady, false);
 
         function onDeviceReady() {
+
             var list = [];
-            var theCount =0;
-           
+            var kills;
+            list.push("11111");
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
@@ -27,32 +28,46 @@
             }
 
             function initializeError() {
-          
+     
             }
 
             function stopScanSuccess() {
-                alert("exiting");
+                alert("stop scan success");
+                //var jsonString = JSON.stringify(list);
+                var email = window.localStorage.getItem("BThereEmail");
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://www.greenseedmusic.com/btherecheckin.php",
+                    data: {
+                        email: email,
+                        locArr: list
+                    },
+                    success: function (data) {
+                        alert(JSON.parse(data));
+                    },
+                    error: function (data) {
+                        alert("error");
+                    }
+                });
             }
 
             function stopScanError() {
-                alert("exiting fail");
+      
             }
 
             function startScanSuccess(obj) {
-               alert("scanning time "+theCount);
+                alert("Scanning");
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                     alert(obj.name);
                 }
-                theCount +=1;
-                if(theCount > 5){
-                    Return;
-                }
+                alert("AfterScanning");
 
             }
 
             function startScanError() {
-               
+
             }
 
             document.getElementById("join").addEventListener("click", join);
@@ -60,6 +75,8 @@
             document.getElementById("checkin").addEventListener("click", checkin);
 
             if (window.localStorage.getItem("BThere") == "true") {
+
+
                 var email = window.localStorage.getItem("BThereEmail");
                 var password = window.localStorage.getItem("BTherePassword");
 
@@ -109,13 +126,16 @@
 
             //This code will execute when the Check-In button is clicked.
             function checkin() {
-                   
+                alert("Checkedin");
+                     myVar = setTimeout(function () {alert("kill called");
+                    bluetoothle.stopScan(stopScanSuccess, stopScanError)
+                }, 6000);
+                
                 kills = setTimeout(function () {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
                     });
                 }, 500);
-                bluetoothle.stopScan(stopScanSuccess, stopScanError);
 
                
 
