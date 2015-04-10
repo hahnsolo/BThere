@@ -13,10 +13,9 @@
         document.addEventListener("deviceready", onDeviceReady, false);
 
         function onDeviceReady() {
-            alert("hello joe");
             var list = [];
-            var kills;
-            list.push("11111");
+            var x =0;
+           
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
@@ -24,15 +23,15 @@
             });
 
             function initializeSuccess() {
-                alert("initialize work");
+           
             }
 
             function initializeError() {
-                alert("initialize broken");
+          
             }
 
             function stopScanSuccess() {
-                alert("stop scan success");
+                aler("exiting");
                 //var jsonString = JSON.stringify(list);
                 var email = window.localStorage.getItem("BThereEmail");
 
@@ -47,27 +46,31 @@
                         alert(JSON.parse(data));
                     },
                     error: function (data) {
-                        alert("error");
+                      
                     }
                 });
             }
 
             function stopScanError() {
-                alert("Never Dieing");
+
             }
 
             function startScanSuccess(obj) {
-                alert("Scanning");
+               
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
                     alert(obj.name);
                 }
-                alert("AfterScanning");
+                x++;
+                if(X == 5){
+                    alert("scannerd 5 time");
+                    bluetoothle.stopScan(stopScanSuccess, stopScanError);
+                }
 
             }
 
             function startScanError() {
-                alert("not hello");
+               
             }
 
             document.getElementById("join").addEventListener("click", join);
@@ -126,11 +129,7 @@
 
             //This code will execute when the Check-In button is clicked.
             function checkin() {
-                alert("Checkedin");
-                     myVar = setTimeout(function () {alert("kill called");
-                    bluetoothle.stopScan(stopScanSuccess, stopScanError)
-                }, 6000);
-                
+                   
                 kills = setTimeout(function () {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
