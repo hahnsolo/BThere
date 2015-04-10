@@ -57,6 +57,10 @@
             }
 
             function startScanSuccess(obj) {
+                myVar = setTimeout(function () {alert("kill called");
+                    bluetoothle.stopScan(stopScanSuccess, stopScanError)
+                }, 6000);
+                
                 alert("Scanning");
                 if (list.indexOf(obj.name) == -1) {
                     list.push(obj.name);
@@ -127,10 +131,7 @@
             //This code will execute when the Check-In button is clicked.
             function checkin() {
                 alert("Checkedin");
-                     myVar = setTimeout(function () {alert("kill called");
-                    bluetoothle.stopScan(stopScanSuccess, stopScanError)
-                }, 6000);
-                
+                     
                 kills = setTimeout(function () {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
