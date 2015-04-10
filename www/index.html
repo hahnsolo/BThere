@@ -14,9 +14,9 @@
 
         function onDeviceReady() {
 
-            var list = [];
+            var list;
             var kills;
-            list.push("Undefined");
+            
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
@@ -34,7 +34,7 @@
             function stopScanSuccess() {
                 //var jsonString = JSON.stringify(list);
                 var email = window.localStorage.getItem("BThereEmail");
-                alert(list.length);
+               
                 $.ajax({
                     type: "POST",
                     url: "http://www.greenseedmusic.com/btherecheckin.php",
@@ -61,9 +61,8 @@
                 }, 6000);
                 
 
-                if (list.indexOf(obj.name) == -1) {
-                    list.push(obj.name);
-                    alert(obj.name);
+                if (obj.name == "CoffeeLoft") {
+                    list=obj.name;
                 }
             
 
