@@ -17,7 +17,14 @@
             var list;
             var kills;
             var count = 0;
-            
+
+            function person(name, fact) {
+                this.userName = name;
+                this.condition = fact;
+            }
+
+
+
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
@@ -25,57 +32,60 @@
             });
 
             function initializeSuccess() {
-           
+
             }
 
             function initializeError() {
-     
+
             }
 
             function stopScanSuccess() {
                 //var jsonString = JSON.stringify(list);
                 var email = window.localStorage.getItem("BThereEmail");
 
-            if(list == "CoffeeLoft"){
-                $.ajax({
-                    type: "POST",
-                    async: "true",
-                    url: "http://www.greenseedmusic.com/btherecheckin.php",
-                    data: {
-                        email: email,
-                        locArr: list
-                    },
-                    success: function (data) {
-                        alert("Kaboom");
-                        alert(JSON.parse(data));
-                    },
-                    error: function (data) {
-                        alert("error");
-                    }
-                });
+                if (list == "CoffeeLoft") {
+                    $.ajax({
+                        type: "POST",
+                        async: "true",
+                        url: "http://www.greenseedmusic.com/btherecheckin.php",
+                        data: {
+                            email: email,
+                            locArr: list
+                        },
+                        success: function(data) {
+                            if(data == "fail")
+                            {
+                                alert("no peoples");
+                            }
+                            //$peoples = JSON.parse(data));
+                        },
+                        error: function(data) {
+                            alert("error");
+                        }
+                    });
+                } else {
+                    alert("Please only try from the Coffee Loft");
+                    document.getElementById("checkin").disabled = false;
+                }
             }
-            else{
-             alert("Please only try from the Coffee Loft");
-                document.getElementById("checkin").disabled = false;
-            }
-        }
 
             function stopScanError() {
-      
+
             }
 
             function startScanSuccess(obj) {
                 document.getElementById("checkin").disabled = true;
-                myVar = setTimeout(function () {clearTimeout(kills);
+                myVar = setTimeout(function() {
+                    clearTimeout(kills);
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 6000);
-                
 
-                if (obj.name == "CoffeeLoft" && count <1) {
-                    list=obj.name;
+
+                if (obj.name == "CoffeeLoft" && count < 1) {
+                    list = obj.name;
                     count++;
                 }
-            
+
 
             }
 
@@ -101,12 +111,12 @@
                         email: email,
                         password: password
                     },
-                    success: function (data) {
+                    success: function(data) {
                         alert(data);
                         var buttons = document.getElementById("checkinsection");
                         buttons.style.display = "block";
                     },
-                    error: function (data) {}
+                    error: function(data) {}
                 });
             } else {
 
@@ -116,14 +126,14 @@
 
 
 
-            $('#Signup').submit(function () {
-                $.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
+            $('#Signup').submit(function() {
+                $.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function(data) {
                     var email = $("#signupEmail").val();
                     var password = $("#signupPassword").val();
                     window.localStorage.setItem("BThere", "true");
                     window.localStorage.setItem("BThereEmail", email);
                     window.localStorage.setItem("BTherePassword", password);
-                }).fail(function () {
+                }).fail(function() {
 
                 });
                 return false;
@@ -140,14 +150,14 @@
             //This code will execute when the Check-In button is clicked.
             function checkin() {
                 alert("Checkedin");
-                     
-                kills = setTimeout(function () {
+
+                kills = setTimeout(function() {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
                     });
                 }, 500);
 
-               
+
 
             }
         }
