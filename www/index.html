@@ -14,8 +14,9 @@
 
         function onDeviceReady() {
 
-            var list = "Poop";
+            var list;
             var kills;
+            var count = 0;
             
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
@@ -61,8 +62,9 @@
                 }, 6000);
                 
 
-                if (list.indexOf("CoffeeLoft") > -1) {
+                if (obj.name == "CoffeeLoft" && count <1) {
                     list=obj.name;
+                    count++;
                     alert("in loft");
                 }
             
