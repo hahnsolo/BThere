@@ -54,6 +54,10 @@
                     }
                 });
             }
+            else{
+             alert("Please only try from the Coffee Loft");
+             document.getElementById("checkin").disabled = false;
+            }
         }
 
             function stopScanError() {
@@ -61,6 +65,7 @@
             }
 
             function startScanSuccess(obj) {
+                document.getElementById("myBtn").disabled = true;
                 myVar = setTimeout(function () {clearTimeout(kills);
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 6000);
