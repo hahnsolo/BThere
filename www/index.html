@@ -17,7 +17,7 @@
             var list;
             var kills;
             var count = 0;
-            
+
 
             bluetoothle.initialize(initializeSuccess, initializeError, {
                 "request": true,
@@ -25,53 +25,53 @@
             });
 
             function initializeSuccess() {
-           
+
             }
 
             function initializeError() {
-     
+
             }
 
             function stopScanSuccess() {
                 //var jsonString = JSON.stringify(list);
-                var email = window.localStorage.getItem("BThereEmail");
-                alert("dead");
-                alert(email);
-                alert(list);
-                $.ajax({
-                    type: "POST",
-                    async: "true",
-                    url: "http://www.greenseedmusic.com/btherecheckin.php",
-                    data: {
-                        email: email,
-                        locArr: list
-                    },
-                    success: function (data) {
-                        alert("success");
-                        alert(JSON.parse(data));
-                    },
-                    error: function (data) {
-                        alert("error");
-                    }
-                });
+                var em.localStorage.getItem("BThereEmail");
+
+                if (list == "CoffeeLoft") {
+                    $.ajax({
+                        type: "POST",
+                        async: "true",
+                        url: "http://www.greenseedmusic.com/btherecheckin.php",
+                        data: {
+                            email: email,
+                            locArr: list
+                        },
+                        success: function(data) {
+                            alert("Kaboom");
+                            alert(JSON.parse(data));
+                        },
+                        error: function(data) {
+                            alert("error");
+                        }
+                    });
+                }
             }
 
             function stopScanError() {
-      
+
             }
 
             function startScanSuccess(obj) {
-                myVar = setTimeout(function () {clearTimeout(kills);
+                myVar = setTimeout(function() {
+                    clearTimeout(kills);
                     bluetoothle.stopScan(stopScanSuccess, stopScanError)
                 }, 6000);
-                
 
-                if (obj.name == "CoffeeLoft" && count <1) {
-                    list=obj.name;
+
+                if (obj.name == "CoffeeLoft" && count < 1) {
+                    list = obj.name;
                     count++;
-                    alert("in loft");
                 }
-            
+
 
             }
 
@@ -97,12 +97,12 @@
                         email: email,
                         password: password
                     },
-                    success: function (data) {
-                        alert(data);
+                    success: function(data) {
+
                         var buttons = document.getElementById("checkinsection");
                         buttons.style.display = "block";
                     },
-                    error: function (data) {}
+                    error: function(data) {}
                 });
             } else {
 
@@ -112,14 +112,14 @@
 
 
 
-            $('#Signup').submit(function () {
-                $.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
+            $('#Signup').submit(function() {
+                $.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function(data) {
                     var email = $("#signupEmail").val();
                     var password = $("#signupPassword").val();
                     window.localStorage.setItem("BThere", "true");
                     window.localStorage.setItem("BThereEmail", email);
                     window.localStorage.setItem("BTherePassword", password);
-                }).fail(function () {
+                }).fail(function() {
 
                 });
                 return false;
@@ -136,14 +136,14 @@
             //This code will execute when the Check-In button is clicked.
             function checkin() {
                 alert("Checkedin");
-                     
-                kills = setTimeout(function () {
+
+                kills = setTimeout(function() {
                     bluetoothle.startScan(startScanSuccess, startScanError, {
                         "serviceUuids": []
                     });
                 }, 500);
 
-               
+
 
             }
         }
@@ -175,7 +175,6 @@
             <input type="submit" class="button--large--cta" id="join" value="Sign In" />
         </form>
     </section>
-
     <!-- Check-In Button Section -->
     <section id="checkinsection" style="margin-top:25%; height:50%; display:none;">
         <button class="button--large--cta" id="checkin">Check In</button>
