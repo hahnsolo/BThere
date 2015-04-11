@@ -36,8 +36,11 @@
                 //var jsonString = JSON.stringify(list);
                 var email = window.localStorage.getItem("BThereEmail");
                 alert("dead");
+                alert(email);
+                alert(list);
                 $.ajax({
                     type: "POST",
+                    async: "true",
                     url: "http://www.greenseedmusic.com/btherecheckin.php",
                     data: {
                         email: email,
