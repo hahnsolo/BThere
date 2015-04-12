@@ -17,13 +17,6 @@
             var list;
             var kills;
             var count = 0;
-            var persons = new Array();
-            
-            function person(name, fact) {
-                this.userName = name;
-                this.condition = fact;
-                this.age = age;
-            }
 
 
 
@@ -55,9 +48,7 @@
                             locArr: list
                         },
                         success: function(data) {
-                               
-                         persons = JSON.parse(data));
-                            
+                        alert("Success");
                         },
                         error: function(data) {
                             alert("error");
@@ -112,7 +103,7 @@
                         password: password
                     },
                     success: function(data) {
-                        alert(data);
+                        
                         var buttons = document.getElementById("checkinsection");
                         buttons.style.display = "block";
                     },
