@@ -48,7 +48,8 @@
                             locArr: list
                         },
                         success: function(data) {
-                        alert("Success");
+                        var x = JSON.parse(data);
+                        alert(x);
                         },
                         error: function(data) {
                             alert("error");
