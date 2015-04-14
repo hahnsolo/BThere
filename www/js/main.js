@@ -62,20 +62,22 @@ function onDeviceReady() {
     function startScanError() {
 
     }
-
-    document.getElementById("join").addEventListener("click", function() {
+    function joinClick() {
         (document.getElementById("buttons")).style.display = "none";
         (document.getElementById("signupformsection")).style.display = "none";
-    });
-    document.getElementById("checkin").addEventListener("click", function() {
+    }
+    function checkinClick() {
         alert("Check-in success!");
         kills = setTimeout(function () {
             bluetoothle.startScan(startScanSuccess, startScanError, {
                 "serviceUuids": []
             });
         }, 500);
-    });
-
+    }
+    
+    document.getElementById("join").addEventListener("click", joinClick);
+    document.getElementById("checkin").addEventListener("click", checkinClick);
+    
     if (window.localStorage.getItem("BThere") == "true") {
         email = window.localStorage.getItem("BThereEmail");
         password = window.localStorage.getItem("BTherePassword");
