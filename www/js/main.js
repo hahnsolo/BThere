@@ -27,8 +27,13 @@ function onDeviceReady() {
                     email: email,
                     locArr: list
                 },
-                success: function (data) {
-                    alert(JSON.parse(data));
+                success: function (personObj) {
+                    document.getElementById("checkin").style.display = "none";
+                    //personObj.UserName
+                    //personObj.UserFact
+                    var markupToAdd = "<h1 class='userName'>" + personObj.UserName + "</h1>" + 
+                        "<p class='userFact'>" + personObj.UserFact + "</p>";
+                    $("#checkinsection").append(markupToAdd).fadeIn();
                 },
                 error: function (data) {
                     alert("Error");
@@ -43,6 +48,7 @@ function onDeviceReady() {
 
     }
     function startScanSuccess(obj) {
+        $("#checkin").text("Loading...");
         document.getElementById("checkin").disabled = true;
         myVar = setTimeout(function () {
             clearTimeout(kills);
@@ -96,6 +102,7 @@ function onDeviceReady() {
             window.localStorage.setItem("BThere", "true");
             window.localStorage.setItem("BThereEmail", email);
             window.localStorage.setItem("BTherePassword", password);
+            
         }).fail(function () {
 
         });
