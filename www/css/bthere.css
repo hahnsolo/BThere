@@ -1,5 +1,13 @@
-body {
+/* Initial load styles */
+#checkinsection, #signupformsection, #buttons {
+    margin-top:25%; 
+    height:50%; 
+    display:none;
+}
 
+/* Main styles */
+
+body {
     background: rgb(204, 22, 143);
     background: rgba(204, 22, 143, 0.81);
 }
