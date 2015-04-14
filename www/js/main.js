@@ -104,7 +104,8 @@ function onDeviceReady() {
             window.localStorage.setItem("BThere", "true");
             window.localStorage.setItem("BThereEmail", email);
             window.localStorage.setItem("BTherePassword", password);
-            
+            $("#signupformsection").hide();
+            $("#checkinsection").show();
         }).fail(function () {
 
         });
