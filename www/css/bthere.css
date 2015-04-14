@@ -8,8 +8,8 @@
 /* Main styles */
 
 body {
-    background: rgb(204, 22, 143);
-    background: rgba(204, 22, 143, 0.81);
+    background: #CFE7F5;
+    color: #0D0E0F;
 }
 
 .button--large--cta {
@@ -26,13 +26,11 @@ body {
     margin-top: 10px;
     font: inherit;
     color: inherit;
-    background: transparent;
     border: none;
     line-height: normal;
     font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
     font-size: 17px;
     cursor: default;
     -webkit-user-select: none;
@@ -48,9 +46,9 @@ body {
     font-size: 17px;
     line-height: 32px;
     letter-spacing: 0;
-    color: #fff;
     vertical-align: middle;
-    background-color: rgba(24, 103, 194, 0.81);
+    background-color: #46515B;
+    color: #FFFFFF;
     border: 0px solid currentColor;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -59,9 +57,6 @@ body {
     -o-transition: none;
     transition: none;
     border: none;
-    background-color: #25a6d9;
-    color: #fff;
-    font-size: 17px;
     font-weight: 500;
     line-height: 36px;
     padding: 4px 12px;
@@ -82,16 +77,6 @@ body {
     outline: 0;
 }
 
-.button--large--cta:active {
-    color: #fff;
-    background-color: #25a6d9;
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
-    opacity: 0.55;
-}
-
 .button--large--cta:disabled,
 .button--large--cta[disabled] {
     opacity: 0.3;
@@ -101,11 +86,7 @@ body {
 .text-input {
   padding: 0;
   margin: 0;
-  font: inherit;
-  color: inherit;
-  background: transparent;
   border: none;
-  line-height: normal;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -117,8 +98,6 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 17px;
   letter-spacing: 0;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
@@ -132,9 +111,6 @@ body {
   font-size: 15px;
   height: 31px;
   font-weight: 400;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .text-input::-webkit-input-placeholder,
 .text-input::-moz-placeholder,
