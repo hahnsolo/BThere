@@ -64,7 +64,7 @@ function onDeviceReady() {
     }
     function joinClick() {
         (document.getElementById("buttons")).style.display = "none";
-        (document.getElementById("signupformsection")).style.display = "none";
+        (document.getElementById("signupformsection")).style.display = "block";
     }
     function checkinClick() {
         alert("Check-in success!");
