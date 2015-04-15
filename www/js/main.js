@@ -31,13 +31,27 @@ function onDeviceReady() {
                     document.getElementById("checkin").style.display = "none";
                     //personObj.UserName
                     //personObj.UserFact
-                    markupToAdd = "<p>John Doe would like to meet!</p><br /><button class='button--large--cta'>Meet John</button>";
+                    
+                    var testPerson = new Person(
+                        "John Doe", 
+                        "John Doe", 
+                        "johndoe@gmail.com", 
+                        "Pianist, painter and NASCAR fan!", 
+                        "Hey I'm 25 years old and I'm a student at Sheridan College in the Computer Programmer program.");
+                    
+                    markupToAdd = testPerson.printPersonInfo();
+                    markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + testPerson.getName() + "</button>";
+                    
                     if (personObj != null) {
                         if (personObj.UserName != undefined) {
-                            var markupToAdd = "<h1 class='userName'>" + personObj.UserName + "</h1>" + 
-                            "<p class='userFact'>" + personObj.UserFact + "</p>";
+                            
+                            var personObj = new Person(personObj.UserName, "", "", personObj.UserFact, "");             
+                            var markupToAdd = personObj.printPersonInfo();'
+                            markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + personObj.getName() + "</button>";
+                            
                         }
                     }
+                    markupToAdd += 
                     $("#checkinsection").append(markupToAdd).fadeIn();
                 },
                 error: function (data) {
@@ -118,3 +132,27 @@ function onDeviceReady() {
         return false;
     });
 }
+/* Objects */
+var Person = function(userName, userNickname, userEmail, userFunFact, userBiography) {
+    this.Name = userName;
+    this.Nickname = userNickname;
+    this.Email = userEmail;
+    this.FunFact = userFunFact;
+    this.Biography = userBiography;
+};
+Person.prototype.displayInformation = function() {
+    return this.Name + "'s biography is: " + this.Biography + " and their fun fact is " + this.FunFact;
+};
+Person.prototype.printPersonInfo = function() {
+    return "<h1 class='userName'>" + this.Name + "</h1>" + 
+        "<p class='userFact'>" + this.FunFact + "</p>";
+};
+Person.prototype.getName = function() {
+    return this.Name;
+};
+var Location = function(locationName) {
+    this.Location = locationName;
+};
+Location.prototype.displayLocationName = function() {
+    return "You are in " + this.Location;
+};
