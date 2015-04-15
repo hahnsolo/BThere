@@ -46,12 +46,11 @@ function onDeviceReady() {
                         if (personObj.UserName != undefined) {
                             
                             var personObj = new Person(personObj.UserName, "", "", personObj.UserFact, "");             
-                            var markupToAdd = personObj.printPersonInfo();'
+                            markupToAdd = personObj.printPersonInfo();'
                             markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + personObj.getName() + "</button>";
                             
                         }
                     }
-                    markupToAdd += 
                     $("#checkinsection").append(markupToAdd).fadeIn();
                 },
                 error: function (data) {
