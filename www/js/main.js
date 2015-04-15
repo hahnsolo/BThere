@@ -31,7 +31,7 @@ function onDeviceReady() {
                     document.getElementById("checkin").style.display = "none";
                     //personObj.UserName
                     //personObj.UserFact
-                    
+                    $("#checkinsection").append("Someone would like to meet!<br />");
                     var testPerson = new Person(
                         "John Doe", 
                         "John Doe", 
@@ -47,7 +47,8 @@ function onDeviceReady() {
                             
                             var personObj = new Person(personObj.UserName, "", "", personObj.UserFact, "");             
                             markupToAdd = personObj.printPersonInfo();
-                            markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + personObj.getName() + "</button>";
+                            markupToAdd += "<br /><button class='button--large--cta letsmeetbutton' data-name='" + personObj.getName() + "'>" 
+                                + "Meet " + personObj.getName() + "?</button>";
                             
                         }
                     }
@@ -131,6 +132,10 @@ function onDeviceReady() {
         return false;
     });
 }
+$(".letsmeetbutton").on("click", function() {
+    var newMarkup = "<h2>" + $(this).attr("data-name") + " also wants to meet you! Stand up and say hello!" + "</h2>";
+    $("#checkinsection").html(newMarkup);
+});
 /* Objects */
 var Person = function(userName, userNickname, userEmail, userFunFact, userBiography) {
     this.Name = userName;
