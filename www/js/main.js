@@ -40,7 +40,7 @@ function onDeviceReady() {
                         "Hey I'm 25 years old and I'm a student at Sheridan College in the Computer Programmer program.");
                     
                     var markupToAdd = testPerson.printPersonInfo();
-                    markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + testPerson.getName() + "</button>";
+                    markupToAdd += "<br /><button class='button--large--cta letsmeetbutton' data-name='" + personObj.getName() + "'>" + "Meet " + testPerson.getName() + "?</button>";
                     
                     if (personObj != null) {
                         if (personObj.UserName != undefined) {
