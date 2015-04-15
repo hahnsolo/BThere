@@ -81,6 +81,7 @@ function onDeviceReady() {
     }
     
     document.getElementById("join").addEventListener("click", joinClick);
+    document.getElementById("signin").addEventListener("click", joinClick);
     document.getElementById("checkin").addEventListener("click", checkinClick);
     
     if (window.localStorage.getItem("BThere") == "true") {
