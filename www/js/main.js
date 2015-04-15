@@ -31,8 +31,13 @@ function onDeviceReady() {
                     document.getElementById("checkin").style.display = "none";
                     //personObj.UserName
                     //personObj.UserFact
-                    var markupToAdd = "<h1 class='userName'>" + personObj.UserName + "</h1>" + 
-                        "<p class='userFact'>" + personObj.UserFact + "</p>";
+                    markupToAdd = "<p>John Doe would like to meet!</p><br /><button class='button--large--cta'>Meet John</button>";
+                    if (personObj != null) {
+                        if (personObj.UserName != undefined) {
+                            var markupToAdd = "<h1 class='userName'>" + personObj.UserName + "</h1>" + 
+                            "<p class='userFact'>" + personObj.UserFact + "</p>";
+                        }
+                    }
                     $("#checkinsection").append(markupToAdd).fadeIn();
                 },
                 error: function (data) {
