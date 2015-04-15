@@ -69,6 +69,7 @@ p.subheading {
     width: 100%;
     background-color: #2980B9;
     color: #ECF0F1;
+    display: inline-block;
 }
 
 .button--large--cta:hover {

@@ -39,14 +39,14 @@ function onDeviceReady() {
                         "Pianist, painter and NASCAR fan!", 
                         "Hey I'm 25 years old and I'm a student at Sheridan College in the Computer Programmer program.");
                     
-                    markupToAdd = testPerson.printPersonInfo();
+                    var markupToAdd = testPerson.printPersonInfo();
                     markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + testPerson.getName() + "</button>";
                     
                     if (personObj != null) {
                         if (personObj.UserName != undefined) {
                             
                             var personObj = new Person(personObj.UserName, "", "", personObj.UserFact, "");             
-                            markupToAdd = personObj.printPersonInfo();'
+                            markupToAdd = personObj.printPersonInfo();
                             markupToAdd += "<br /><button class='button--large--cta letsmeetbutton'>" + personObj.getName() + "</button>";
                             
                         }
