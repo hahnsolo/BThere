@@ -1,15 +1,17 @@
 /* Initial load styles */
 #checkinsection, #signupformsection, #buttons {
-    margin-top:25%; 
-    height:50%; 
+    padding-top:100px; 
+    height:100%; 
     display:none;
+    width: 100%;
+    text-align:center;
 }
 
 /* Main styles */
-
 body {
     background: #CFE7F5;
     color: #0D0E0F;
+    width: 100%;
 }
 #Signup input, #Signup textarea {
     margin-top: 5px; margin-bottom: 3px;
