@@ -53,6 +53,10 @@ function onDeviceReady() {
                         }
                     }
                     $("#checkinsection").append(markupToAdd).fadeIn();
+                    $(".letsmeetbutton").on("click", function() {
+                        var newMarkup = "<h2>" + $(this).attr("data-name") + " also wants to meet you! Stand up and say hello!" + "</h2>";
+                        $("#checkinsection").html(newMarkup);
+                    });
                 },
                 error: function (data) {
                     alert("Error");
@@ -132,10 +136,7 @@ function onDeviceReady() {
         return false;
     });
 }
-$(".letsmeetbutton").on("click", function() {
-    var newMarkup = "<h2>" + $(this).attr("data-name") + " also wants to meet you! Stand up and say hello!" + "</h2>";
-    $("#checkinsection").html(newMarkup);
-});
+
 /* Objects */
 var Person = function(userName, userNickname, userEmail, userFunFact, userBiography) {
     this.Name = userName;
