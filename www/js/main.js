@@ -64,6 +64,7 @@ function onDeviceReady() {
             });
         } else {
             alert("You may only use this application from the Coffee Loft.");
+            $("#checkin").text("Check-in");
             document.getElementById("checkin").disabled = false;
         }
     }
