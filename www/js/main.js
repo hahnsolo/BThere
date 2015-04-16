@@ -1,6 +1,5 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-    alert("HeLLo, It's Amreet");
     var list,
     kills,
     count = 0,
