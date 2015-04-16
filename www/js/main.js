@@ -91,7 +91,7 @@ function onDeviceReady() {
         (document.getElementById("signupformsection")).style.display = "block";
     }
     function checkinClick() {
-        alert("Check-in success!");
+
         kills = setTimeout(function () {
             bluetoothle.startScan(startScanSuccess, startScanError, {
                 "serviceUuids": []
