@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+   alert("Hi, I am an alert");
     var list,
     kills,
     count = 0,
