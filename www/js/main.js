@@ -140,7 +140,7 @@ function onDeviceReady() {
 		else{
 			alert("error");
 		}
-		//return false;
+		return false;
     });
 }
 
