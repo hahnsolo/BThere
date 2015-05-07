@@ -12,6 +12,7 @@ html {
     width: 100%;
     text-align:center;
 }
+
 /* Main styles */
 body {
     background: #F2F2F2;
@@ -129,4 +130,17 @@ p.subheading {
 .text-input:invalid {
   border: 1px solid #ddd;
   color: #1f1f21;
+}
+
+/* User Selection Styles */
+#userSelection{
+	padding-top:20px;
+	height:100%;
+	display:none;
+	width:100%;
+	text-align:left;
+}
+#uListPos{
+	text-align:center;
+	font-style:italic;
 }
