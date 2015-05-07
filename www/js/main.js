@@ -135,7 +135,9 @@ function onDeviceReady() {
 				$("#checkinsection").show();
 			}).fail(function () {
 				alert("broke");
-			}).success(function(){alert("the french is turned on" + data);});
+			}).done(function(){
+				alert("the french is turned on" + data);
+			});
 		}
 		else{
 			alert("error");
