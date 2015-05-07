@@ -124,19 +124,34 @@ function onDeviceReady() {
         (document.getElementById("buttons")).style.display = "block";
     }
     $('#Signup').submit(function () {
-        $.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
-            email = $("#signupEmail").val();
-            password = $("#signupPassword").val();
-            window.localStorage.setItem("BThere", "true");
-            window.localStorage.setItem("BThereEmail", email);
-            window.localStorage.setItem("BTherePassword", password);
-            $("#signupformsection").hide();
-            $("#checkinsection").show();
-        }).fail(function () {
-            alert("broke");
-        }).success(function(){alert("worked");});
-        return false;
+		if (isValidForm() === TRUE){
+			$.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
+				email = $("#signupEmail").val();
+				password = $("#signupPassword").val();
+				window.localStorage.setItem("BThere", "true");
+				window.localStorage.setItem("BThereEmail", email);
+				window.localStorage.setItem("BTherePassword", password);
+				$("#signupformsection").hide();
+				$("#checkinsection").show();
+			}).fail(function () {
+				alert("broke");
+			}).success(function(){alert("worked");});
+		}
+		return false;
     });
+}
+
+/* Validation */
+function isValidForm(){
+	var email = $("#signupEmail").val();
+	var pass = $("#signupPassword").val();
+	var name = $("#signupName").val();
+	var fact = $("#signupFunFact").val();
+	//Data invalid if...
+	//	- There is only spaces in any field.
+	if ((email.trim() === "") || (pass.trim() === "") || (name.trim() === "") || (fact.trim() === "")){
+		return false;
+	}
 }
 
 /* Objects */
