@@ -135,7 +135,7 @@ function onDeviceReady() {
 				$("#checkinsection").show();
 			}).fail(function () {
 				alert("broke");
-			}).success(function(){alert("worked");});
+			}).success(function(data){alert(data);});
 		}
 		return false;
     });
