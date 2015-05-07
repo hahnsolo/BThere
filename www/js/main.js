@@ -1,6 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-   alert("Hi, I am an alert");
+    alert("Hi, I am an alert");
     var list,
     kills,
     count = 0,
@@ -28,37 +28,40 @@ function onDeviceReady() {
                     email: email,
                     locArr: list
                 },
-                success: function (personObj) {
-                    document.getElementById("checkin").style.display = "none";
-                    //personObj.UserName
-                    //personObj.UserFact
-                    $("#checkinsection").append("Someone would like to meet!<br />");
-                    var testPerson = new Person(
-                        "John Doe", 
-                        "John Doe", 
-                        "johndoe@gmail.com", 
-                        "Pianist, painter and NASCAR fan!", 
-                        "Hey I'm 25 years old and I'm a student at Sheridan College in the Computer Programmer program.");
-                    
-                    var markupToAdd = testPerson.printPersonInfo();
-                    markupToAdd += "<br /><button class='button--large--cta letsmeetbutton' data-name='" + testPerson.getName() + "'>" + "Meet " + testPerson.getName() + "?</button>";
-                    
-                    if (personObj != null) {
-                        if (personObj.UserName != undefined) {
-                            
-                            var personObj = new Person(personObj.UserName, "", "", personObj.UserFact, "");             
-                            markupToAdd = personObj.printPersonInfo();
-                            markupToAdd += "<br /><button class='button--large--cta letsmeetbutton' data-name='" + personObj.getName() + "'>" 
-                                + "Meet " + personObj.getName() + "?</button>";
-                            
-                        }
-                    }
-                    $("#checkinsection").append(markupToAdd).fadeIn();
-                    $(".letsmeetbutton").on("click", function() {
-                        var newMarkup = "<h2>" + $(this).attr("data-name") + " also wants to meet you! Stand up and say hello!" + "</h2>";
-                        $("#checkinsection").html(newMarkup);
-                    });
-                },
+                success: function (data) {
+					$("#checkin").css("display", "none");
+					$("#userSelection").css("display", "block");
+					var userList = data;
+					var tempList = new Array();
+					var i = 0;
+					display();
+					
+					//Display the data to the user.
+					function display() {
+						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
+						$("#uListName").html("User: " + userList[i][1]);
+						$("#uListFact").html("Fact: " + userList[i][2]);
+					}
+					
+					//Push the ID of the user into the table if needed.
+					function chooseMeet(ans){
+						if (ans === "yes"){
+							tempList.push(userList[i][0]);
+						}
+						i++;
+						if (i => userList.length){
+							complete();
+						}
+						else{
+							display();
+						}
+					}
+					
+					//The function is complete.
+					function complete(){
+						//DO SOMETHING
+					}
+				},
                 error: function (data) {
                     alert("Error");
                 }
@@ -125,19 +128,6 @@ function onDeviceReady() {
     }
     $('#Signup').submit(function () {
 		if (isValidForm() === true){
-			/*$.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
-				email = $("#signupEmail").val();
-				password = $("#signupPassword").val();
-				window.localStorage.setItem("BThere", "true");
-				window.localStorage.setItem("BThereEmail", email);
-				window.localStorage.setItem("BTherePassword", password);
-				$("#signupformsection").hide();
-				$("#checkinsection").show();
-			}).fail(function () {
-				alert("broke");
-			}).success(function(){
-				alert("the french is turned on" + data);
-			});*/
 			var myDat = $(this).serialize();
 			$.ajax({
 				type: "POST",
@@ -180,28 +170,3 @@ function isValidForm(){
 	}
 	return true;
 }
-
-/* Objects */
-var Person = function(userName, userNickname, userEmail, userFunFact, userBiography) {
-    this.Name = userName;
-    this.Nickname = userNickname;
-    this.Email = userEmail;
-    this.FunFact = userFunFact;
-    this.Biography = userBiography;
-};
-Person.prototype.displayInformation = function() {
-    return this.Name + "'s biography is: " + this.Biography + " and their fun fact is " + this.FunFact;
-};
-Person.prototype.printPersonInfo = function() {
-    return "<h1 class='userName'>" + this.Name + "</h1>" + 
-        "<p class='userFact'>" + this.FunFact + "</p>";
-};
-Person.prototype.getName = function() {
-    return this.Name;
-};
-var Location = function(locationName) {
-    this.Location = locationName;
-};
-Location.prototype.displayLocationName = function() {
-    return "You are in " + this.Location;
-};
