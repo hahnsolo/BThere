@@ -137,7 +137,10 @@ function onDeviceReady() {
 				alert("broke");
 			}).success(function(){alert("worked");});
 		}
-		return false;
+		else{
+			alert("error");
+		}
+		//return false;
     });
 }
 
@@ -147,8 +150,7 @@ function isValidForm(){
 	var pass = $("#signupPassword").val();
 	var name = $("#signupName").val();
 	var fact = $("#signupFunFact").val();
-	//Data invalid if...
-	//	- There is only spaces in any field.
+	//Data invalid if there is only spaces in any field.
 	if ((email.trim() === "") || (pass.trim() === "") || (name.trim() === "") || (fact.trim() === "")){
 		return false;
 	}
