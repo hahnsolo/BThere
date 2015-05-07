@@ -29,6 +29,12 @@ function onDeviceReady() {
                     locArr: list
                 },
                 success: function (data) {
+					/*	TEST CODE */
+					var userList = data;
+					for (var i = 0; i < userList.length; i++){
+						alert(userList[i][0] + "<br>" + userList[i][1] + "<br>" + userList[i][2]);
+					}
+					/*
 					$("#checkin").css("display", "none");
 					$("#userSelection").css("display", "block");
 					var userList = data;
@@ -61,6 +67,7 @@ function onDeviceReady() {
 					function complete(){
 						//DO SOMETHING
 					}
+					*/
 				},
                 error: function (data) {
                     alert("Error");
