@@ -125,7 +125,7 @@ function onDeviceReady() {
     }
     $('#Signup').submit(function () {
 		if (isValidForm() === true){
-			$.post('http://www.greenseedmusic.com/bthereinserst.php', $(this).serialize(), function (data) {
+			/*$.post('http://www.greenseedmusic.com/bthereinsert.php', $(this).serialize(), function (data) {
 				email = $("#signupEmail").val();
 				password = $("#signupPassword").val();
 				window.localStorage.setItem("BThere", "true");
@@ -135,8 +135,30 @@ function onDeviceReady() {
 				$("#checkinsection").show();
 			}).fail(function () {
 				alert("broke");
-			/*}).success(function(){
-				alert("the french is turned on" + data);*/
+			}).success(function(){
+				alert("the french is turned on" + data);
+			});*/
+			var myDat = $(this).serialize();
+			$.ajax({
+				type: "POST",
+				url: "http://www.greenseedmusic.com/bthereinsert23.php",
+				data: myDat,
+				success: function(data){
+					alert("input successful:" + data);
+					email = $("#signupEmail").val();
+					password = $("#signupPassword").val();
+					window.localStorage.setItem("BThere", "true");
+					window.localStorage.setItem("BThereEmail", email);
+					window.localStorage.setItem("BTherePassword", password);
+					$("#signupformsection").hide();
+					$("#checkinsection").show();
+				},
+				error: function(){
+					alert("ERROR");
+				},
+				fail: function(){
+					alert("broke");
+				}
 			});
 		}
 		else{
