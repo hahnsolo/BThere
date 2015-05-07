@@ -125,10 +125,6 @@ function onDeviceReady() {
     }
     $('#Signup').submit(function () {
         $.post('http://www.greenseedmusic.com/bthereinserta.php', $(this).serialize(), function (data) {
-
-        }).fail(function () {
-
-        }).success(){
             email = $("#signupEmail").val();
             password = $("#signupPassword").val();
             window.localStorage.setItem("BThere", "true");
@@ -136,7 +132,7 @@ function onDeviceReady() {
             window.localStorage.setItem("BTherePassword", password);
             $("#signupformsection").hide();
             $("#checkinsection").show();
-        };
+        }).fail(function () {
         return false;
     });
 }
