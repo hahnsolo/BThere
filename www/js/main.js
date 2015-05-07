@@ -133,6 +133,8 @@ function onDeviceReady() {
             $("#signupformsection").hide();
             $("#checkinsection").show();
         }).fail(function () {
+            alert("broke");
+        }).success(function(){alert("worked");});
         return false;
     });
 }
