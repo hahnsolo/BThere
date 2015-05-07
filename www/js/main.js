@@ -141,7 +141,7 @@ function onDeviceReady() {
 			var myDat = $(this).serialize();
 			$.ajax({
 				type: "POST",
-				url: "http://www.greenseedmusic.com/bthereinsert23.php",
+				url: "http://www.greenseedmusic.com/bthereinsert.php",
 				data: myDat,
 				success: function(data){
 					alert("input successful:" + data);
