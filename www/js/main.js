@@ -30,7 +30,7 @@ function onDeviceReady() {
                 },
                 success: function (data) {
 					/*	TEST CODE */
-					var userList = data;
+					var userList = JSON.parse(data);
 					for (var i = 0; i < userList.length; i++){
 						alert(userList[i][0] + "<br>" + userList[i][1] + "<br>" + userList[i][2]);
 					}
