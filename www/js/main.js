@@ -32,7 +32,7 @@ function onDeviceReady() {
 					/*	TEST CODE */
 					var userList = JSON.parse(data);
 					for (var i = 0; i < userList.length; i++){
-						alert(userList[i][0] + "<br>" + userList[i][1] + "<br>" + userList[i][2]);
+						alert(userList[i][0] + " -- " + userList[i][1] + " -- " + userList[i][2]);
 					}
 					/*
 					$("#checkin").css("display", "none");
