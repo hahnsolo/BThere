@@ -48,8 +48,8 @@ function onDeviceReady() {
 					//Display the data to the user.
 					function display() {
 						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
-						$("#uListName").html("User: " + userList[i][1]);
-						$("#uListFact").html("Fact: " + userList[i][2]);
+						$("#uListName").html("User: " + userList[0][1]);
+						$("#uListFact").html("Fact: " + userList[0][2]);
 					}
 					/*
 					//Push the ID of the user into the table if needed.
