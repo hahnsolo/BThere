@@ -47,6 +47,8 @@ function onDeviceReady() {
 					
 					//Display the data to the user.
 					function display() {
+						alert("User: " + userList[0][1]);
+						alert("Fact: " + userList[0][2]);
 						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
 						$("#uListName").html("User: " + userList[0][1]);
 						$("#uListFact").html("Fact: " + userList[0][2]);
