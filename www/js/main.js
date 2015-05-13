@@ -31,11 +31,11 @@ function onDeviceReady() {
                 success: function (data) {
 					/*	TEST CODE */
 					var userList = JSON.parse(data);
-					/*
+					
 					for (var i = 0; i < userList.length; i++){
 						alert(userList[i][0] + " -- " + userList[i][1] + " -- " + userList[i][2]);
 					}
-					*/
+					
 					
 					(document.getElementById("checkin")).style.display = "none";
 					(document.getElementById("userSelection")).style.display = "block";
