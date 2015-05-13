@@ -37,7 +37,8 @@ function onDeviceReady() {
 					}
 					*/
 					
-					/*(document.getElementById("checkin")).style.display = "none";
+					(document.getElementById("checkin")).style.display = "none";
+					/*
 					(document.getElementById("userSelection")).style.display = "block";
 					var userList = data;
 					var tempList = new Array();
