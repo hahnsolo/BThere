@@ -52,7 +52,7 @@ function onDeviceReady() {
 						$("#uListName").html("User: " + userList[i][1]);
 						$("#uListFact").html("Fact: " + userList[i][2]);
 					}
-					
+					/*
 					//Push the ID of the user into the table if needed.
 					function chooseMeet(ans){
 						if (ans === "yes"){
