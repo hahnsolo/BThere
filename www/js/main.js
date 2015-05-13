@@ -43,7 +43,7 @@ function onDeviceReady() {
 					var userList = data;
 					var tempList = new Array();
 					var i = 0;
-					/*
+					
 					display();
 					
 					//Display the data to the user.
