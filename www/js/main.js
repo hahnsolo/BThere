@@ -37,7 +37,7 @@ function onDeviceReady() {
 					}
 					*/
 					
-					(document.getElementById("checkin")).style.display = "none";
+					/*(document.getElementById("checkin")).style.display = "none";
 					(document.getElementById("userSelection")).style.display = "block";
 					var userList = data;
 					var tempList = new Array();
@@ -72,6 +72,7 @@ function onDeviceReady() {
 							alert(tempList[x][0] + " -- " + tempList[x][1] + " -- " + tempList[x][2]);
 						}
 					}
+					*/
 				},
                 error: function (data) {
                     alert("Error");
