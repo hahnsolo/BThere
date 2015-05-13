@@ -31,10 +31,12 @@ function onDeviceReady() {
                 success: function (data) {
 					/*	TEST CODE */
 					var userList = JSON.parse(data);
+					/*
 					for (var i = 0; i < userList.length; i++){
 						alert(userList[i][0] + " -- " + userList[i][1] + " -- " + userList[i][2]);
 					}
-					/*
+					*/
+					
 					$("#checkin").css("display", "none");
 					$("#userSelection").css("display", "block");
 					var userList = data;
@@ -65,9 +67,11 @@ function onDeviceReady() {
 					
 					//The function is complete.
 					function complete(){
-						//DO SOMETHING
+						//DO SOMETHING.
+						for (var x = 0; x < tempList.length; x++){
+							alert(tempList[x][0] + " -- " + tempList[x][1] + " -- " + tempList[x][2]);
+						}
 					}
-					*/
 				},
                 error: function (data) {
                     alert("Error");
