@@ -47,10 +47,10 @@ function onDeviceReady() {
 					//Display the data to the user.
 					function display() {
 						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
-						$("#uListName").html("User: " + userList[i+5][1]);
-						$("#uListFact").html("Fact: " + userList[i+5][2]);
+						$("#uListName").html("User: " + userList[i][1]);
+						$("#uListFact").html("Fact:<br>" + userList[i][2]);
 					}
-					/*
+					
 					//Push the ID of the user into the table if needed.
 					function chooseMeet(ans){
 						if (ans === "yes"){
