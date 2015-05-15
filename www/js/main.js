@@ -84,10 +84,32 @@ function onDeviceReady() {
 								userList: temps
 							},
 							success: function(data){
-								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+								//alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+								var interval = setInterval(function(){
+									checkDatabase();
+								}, 30000);
+								
+								function checkDatabase(){
+									var isUsers;
+									$.ajax({
+										type: "POST",
+										async: "true",
+										url: "",
+										data: {
+											userEmail: window.localStorage.getItem("BThereEmail");
+										},
+										success: function(data){
+											clearInterval(interval);
+											alert(JSON.stringify(data));
+										},
+										error: function(data){
+											alert("ERROR in USERINTERVAL");
+										}
+									});
+								}
 							},
 							error: function(data){
-								alert("!!ERROR!!");
+								alert("ERROR in USERLISTSUBMIT");
 							}
 						});
 					}
