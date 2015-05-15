@@ -98,8 +98,7 @@ function onDeviceReady() {
 											userEmail: isUsers
 										},
 										success: function(data){
-											var tempData = JSON.stringify(data);
-											tempData.replace("\\", "");
+											var tempData = JSON.parse(data);
 											alert(tempData);
 											if (tempData != "noone"){
 												alert(tempData + " DONE");
