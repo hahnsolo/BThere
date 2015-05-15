@@ -99,7 +99,7 @@ function onDeviceReady() {
 											userEmail: isUsers
 										},
 										success: function(data){
-											if (x => 4){
+											if (x >= 4){
 												clearInterval(interval);
 											}
 											alert("SUCCESS!");
