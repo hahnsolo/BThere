@@ -100,7 +100,8 @@ function onDeviceReady() {
 										},
 										success: function(data){
 											clearInterval(interval);
-											alert(JSON.stringify(data));
+											alert("SUCCESS!");
+											//alert(JSON.stringify(data));
 										},
 										error: function(data){
 											alert("ERROR in USERINTERVAL");
