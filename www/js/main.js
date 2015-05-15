@@ -85,7 +85,6 @@ function onDeviceReady() {
 							},
 							success: function(data){
 								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
-								var x = 0;
 								var interval = setInterval(function(){
 									checkDatabase();
 								}, 300);
@@ -99,10 +98,10 @@ function onDeviceReady() {
 											userEmail: isUsers
 										},
 										success: function(data){
-											if (x >= 4){
+											var tempData = JSON.stringify(data);
+											if (tempData != "no users"){
 												clearInterval(interval);
 											}
-											x++;
 											alert("SUCCESS!");
 											//alert(JSON.stringify(data));
 										},
