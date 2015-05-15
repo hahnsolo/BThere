@@ -99,6 +99,7 @@ function onDeviceReady() {
 										},
 										success: function(data){
 											var tempData = JSON.stringify(data);
+											tempData.stripSlashes();
 											if (tempData != "noone"){
 												alert(tempData);
 												clearInterval(interval);
