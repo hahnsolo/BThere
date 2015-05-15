@@ -94,7 +94,7 @@ function onDeviceReady() {
 									$.ajax({
 										type: "POST",
 										async: "true",
-										url: "",
+										url: "http://www.greenseedmusic.com/btherecheckmeet.php",
 										data: {
 											userEmail: isUsers
 										},
