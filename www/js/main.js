@@ -62,19 +62,20 @@ function onDeviceReady() {
 					//Push the ID of the user into the table if needed.
 					function chooseMeet(ans){
 						if (ans === "yes"){
-							var temps = new array();
-							//temps.push(userList[i][0], userList[i][1]);
-							tempList.push(userList[i][0], userList[i][1]);
+							tempList.push(userList[i][0]);
 						}
 						i++;
 						if (i >= userList.length){
-							complete();
+							for (var x = 0; x < tempList.length; x++){
+								alert(tempList[x][0]);
+							}
+							//complete();
 						}
 						else{
 							display();
 						}
 					}
-					
+					/*
 					//The function is complete.
 					function complete(){
 						//DO SOMETHING.
@@ -82,7 +83,7 @@ function onDeviceReady() {
 							alert(tempList[x][0] + " -- " + tempList[x][1]);
 						}
 					}
-					
+					*/
 				},
                 error: function (data) {
                     alert("Error");
