@@ -96,7 +96,7 @@ function onDeviceReady() {
 										async: "true",
 										url: "",
 										data: {
-											userEmail: window.localStorage.getItem("BThereEmail");
+											userEmail: window.localStorage.getItem("BThereEmail")
 										},
 										success: function(data){
 											clearInterval(interval);
