@@ -75,10 +75,21 @@ function onDeviceReady() {
 					
 					//The function is complete.
 					function complete(){
-						//DO SOMETHING.
-						for (var x = 0; x < tempList.length; x++){
-							alert(tempList[x]);
-						}
+						var temps = JSON.stringify(tempList);
+						$.ajax({
+							type: "POST",
+							async: "true",
+							url: "http://www.greenseedmusic.com/btheremeetup.php",
+							data: {
+								userList: temps
+							},
+							success: function(data){
+								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+							},
+							error: function(data){
+								alert("!!ERROR!!");
+							}
+						});
 					}
 					
 				},
