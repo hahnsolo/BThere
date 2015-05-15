@@ -63,8 +63,8 @@ function onDeviceReady() {
 					function chooseMeet(ans){
 						if (ans === "yes"){
 							var temps = new array();
-							temps.push(userList[i][0], userList[i][1]);
-							tempList.push(temps);
+							//temps.push(userList[i][0], userList[i][1]);
+							tempList.push(userList[i][0], userList[i][1]);
 						}
 						i++;
 						if (i >= userList.length){
@@ -79,7 +79,7 @@ function onDeviceReady() {
 					function complete(){
 						//DO SOMETHING.
 						for (var x = 0; x < tempList.length; x++){
-							alert("User: " + tempList[x][0] + " -- " + tempList[x][1]);
+							alert(tempList[x][0] + " -- " + tempList[x][1]);
 						}
 					}
 					
