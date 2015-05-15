@@ -62,7 +62,7 @@ function onDeviceReady() {
 					//Push the ID of the user into the table if needed.
 					function chooseMeet(ans){
 						if (ans === "yes"){
-							tempList.push(userList[i][0]);
+							tempList.push(userList[i][0], userList[i][1]);
 						}
 						i++;
 						if (i >= userList.length){
@@ -77,7 +77,7 @@ function onDeviceReady() {
 					function complete(){
 						//DO SOMETHING.
 						for (var x = 0; x < tempList.length; x++){
-							alert(tempList[x][0] + " -- " + tempList[x][1] + " -- " + tempList[x][2]);
+							alert("User: " + tempList[x][0] + " -- " + tempList[x][1]);
 						}
 					}
 					
