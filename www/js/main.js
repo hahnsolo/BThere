@@ -100,12 +100,12 @@ function onDeviceReady() {
 										success: function(data){
 											var tempData = JSON.stringify(data);
 											tempData.stripSlashes();
+											alert(tempData);
 											if (tempData != "noone"){
 												alert(tempData);
 												clearInterval(interval);
 											}
 											alert("SUCCESS!");
-											//alert(JSON.stringify(data));
 										},
 										error: function(data){
 											alert("ERROR in USERINTERVAL");
