@@ -102,7 +102,7 @@ function onDeviceReady() {
 											var tempData = JSON.parse(data);
 											alert(tempData);
 											if (tempData != "noone"){
-												alert(tempData + " DONE");
+												alert(isUsers + " -- " + tempData);
 												clearInterval(interval);
 											}
 											alert("SUCCESS!");
