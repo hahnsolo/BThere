@@ -63,7 +63,7 @@ function onDeviceReady() {
 					function chooseMeet(ans){
 						if (ans === "yes"){
 							var temps = new array();
-							temps.push(userList[i][0], userList[i][1])
+							temps.push(userList[i][0], userList[i][1]);
 							tempList.push(temps);
 						}
 						i++;
