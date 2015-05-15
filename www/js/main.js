@@ -75,6 +75,7 @@ function onDeviceReady() {
 					
 					//The function is complete.
 					function complete(){
+						(document.getElementById("userSelection")).style.display = "none";
 						var temps = JSON.stringify(tempList);
 						$.ajax({
 							type: "POST",
