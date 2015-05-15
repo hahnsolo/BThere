@@ -65,7 +65,7 @@ function onDeviceReady() {
 							tempList.push(userList[i][0]);
 						}
 						i++;
-						if (i => userList.length){
+						if (i >= userList.length){
 							//complete();
 						}
 						else{
