@@ -86,7 +86,6 @@ function onDeviceReady() {
 							success: function(data){
 								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
 								var isUsers = window.localStorage.getItem("BThereEmail");
-								alert(isUsers);
 								var interval = setInterval(function(){
 									checkDatabase();
 								}, 300);
@@ -105,7 +104,6 @@ function onDeviceReady() {
 												alert(isUsers + " -- " + tempData);
 												clearInterval(interval);
 											}
-											alert("SUCCESS!");
 										},
 										error: function(data){
 											alert("ERROR in USERINTERVAL");
