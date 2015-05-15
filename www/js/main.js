@@ -36,8 +36,8 @@ function onDeviceReady() {
 						alert(userList[i][0] + " -- " + userList[i][1] + " -- " + userList[i][2]);
 					}
 					*/
-					(document.getElementById("selectUser1").addEventListener("click", chooseMeet("yes", false);
-					(document.getElementById("selectUser2").addEventListener("click", chooseMeet("no"), false);
+					//(document.getElementById("selectUser1").addEventListener("click", chooseMeet("yes"));
+					//(document.getElementById("selectUser2").addEventListener("click", chooseMeet("no"));
 					(document.getElementById("checkin")).style.display = "none";
 					(document.getElementById("userSelection")).style.display = "block";
 					
