@@ -66,13 +66,13 @@ function onDeviceReady() {
 						}
 						i++;
 						if (i >= userList.length){
-							//complete();
+							complete();
 						}
 						else{
 							display();
 						}
 					}
-					/*
+					
 					//The function is complete.
 					function complete(){
 						//DO SOMETHING.
@@ -80,7 +80,7 @@ function onDeviceReady() {
 							alert(tempList[x][0] + " -- " + tempList[x][1] + " -- " + tempList[x][2]);
 						}
 					}
-					*/
+					
 				},
                 error: function (data) {
                     alert("Error");
