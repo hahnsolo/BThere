@@ -67,7 +67,7 @@ function onDeviceReady() {
 						i++;
 						if (i >= userList.length){
 							for (var x = 0; x < tempList.length; x++){
-								alert(tempList[x][0]);
+								alert(tempList[x]);
 							}
 							//complete();
 						}
