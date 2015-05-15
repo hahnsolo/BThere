@@ -77,7 +77,7 @@ function onDeviceReady() {
 					function complete(){
 						//DO SOMETHING.
 						for (var x = 0; x < tempList.length; x++){
-							alert(tempList[x][0] + " -- " + tempList[x][1]);
+							alert(tempList[x]);
 						}
 					}
 					
