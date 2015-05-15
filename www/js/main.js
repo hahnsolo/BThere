@@ -102,6 +102,7 @@ function onDeviceReady() {
 											if (x >= 4){
 												clearInterval(interval);
 											}
+											x++;
 											alert("SUCCESS!");
 											//alert(JSON.stringify(data));
 										},
