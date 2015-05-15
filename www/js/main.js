@@ -66,16 +66,13 @@ function onDeviceReady() {
 						}
 						i++;
 						if (i >= userList.length){
-							for (var x = 0; x < tempList.length; x++){
-								alert(tempList[x]);
-							}
-							//complete();
+							complete();
 						}
 						else{
 							display();
 						}
 					}
-					/*
+					
 					//The function is complete.
 					function complete(){
 						//DO SOMETHING.
@@ -83,7 +80,7 @@ function onDeviceReady() {
 							alert(tempList[x][0] + " -- " + tempList[x][1]);
 						}
 					}
-					*/
+					
 				},
                 error: function (data) {
                     alert("Error");
