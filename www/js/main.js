@@ -85,10 +85,10 @@ function onDeviceReady() {
 							},
 							success: function(data){
 								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+								var x = 0;
 								var interval = setInterval(function(){
 									checkDatabase();
 								}, 300);
-								
 								function checkDatabase(){
 									var isUsers = window.localStorage.getItem("BThereEmail");
 									$.ajax({
@@ -99,7 +99,9 @@ function onDeviceReady() {
 											userEmail: isUsers
 										},
 										success: function(data){
-											clearInterval(interval);
+											if (x => 4){
+												clearInterval(interval);
+											}
 											alert("SUCCESS!");
 											//alert(JSON.stringify(data));
 										},
