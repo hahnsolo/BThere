@@ -84,19 +84,19 @@ function onDeviceReady() {
 								userList: temps
 							},
 							success: function(data){
-								//alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
 								var interval = setInterval(function(){
 									checkDatabase();
-								}, 30000);
+								}, 300);
 								
 								function checkDatabase(){
-									var isUsers;
+									var isUsers = window.localStorage.getItem("BThereEmail");
 									$.ajax({
 										type: "POST",
 										async: "true",
 										url: "",
 										data: {
-											userEmail: window.localStorage.getItem("BThereEmail")
+											userEmail: isUsers
 										},
 										success: function(data){
 											clearInterval(interval);
