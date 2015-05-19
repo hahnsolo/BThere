@@ -19,8 +19,10 @@ function onDeviceReady() {
     function stopScanSuccess() {
         //var jsonString = JSON.stringify(list);
         email = window.localStorage.getItem("BThereEmail");
+		
 		/* TEST CODE */
 		list = "CoffeeLoft";
+		
         if (list == "CoffeeLoft") {
             $.ajax({
                 type: "POST",
