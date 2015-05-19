@@ -77,9 +77,8 @@ function onDeviceReady() {
 					
 					//The function is complete.
 					function complete(){
-						alert("Successfully completed");
 						(document.getElementById("userSelection")).style.display = "none";
-						var isUsers = window.localStorage.getItem("BThereEmail");
+						var isUsers = JSON.stringify(window.localStorage.getItem("BThereEmail"));
 						var temps = JSON.stringify(tempList);
 						$.ajax({
 							type: "POST",
