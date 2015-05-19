@@ -89,6 +89,7 @@ function onDeviceReady() {
 								userList: temps
 							},
 							success: function(data){
+								alert("WORKS!");
 								alert(JSON.parse(data));
 								//OMITTED UNTIL TESTING COMPLETE
 								/*
@@ -119,6 +120,7 @@ function onDeviceReady() {
 								*/
 							},
 							error: function(data){
+								alert("ERROR");
 								alert(JSON.parse(data));
 							}
 						});
