@@ -119,7 +119,7 @@ function onDeviceReady() {
 								*/
 							},
 							error: function(data){
-								alert("ERROR");
+								alert(data);
 							}
 						});
 					}
