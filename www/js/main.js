@@ -87,7 +87,9 @@ function onDeviceReady() {
 								userList: temps
 							},
 							success: function(data){
-								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
+								alert(JSON.parse(data));
+								//OMITTED UNTIL TESTING COMPLETE
+								/*
 								var interval = setInterval(function(){
 									checkDatabase();
 								}, 300);
@@ -112,6 +114,7 @@ function onDeviceReady() {
 										}
 									});
 								}
+								*/
 							},
 							error: function(data){
 								alert("ERROR in USERLISTSUBMIT");
