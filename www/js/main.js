@@ -76,17 +76,18 @@ function onDeviceReady() {
 					//The function is complete.
 					function complete(){
 						(document.getElementById("userSelection")).style.display = "none";
+						var isUsers = window.localStorage.getItem("BThereEmail");
 						var temps = JSON.stringify(tempList);
 						$.ajax({
 							type: "POST",
 							async: "true",
 							url: "http://www.greenseedmusic.com/btheremeetup.php",
 							data: {
+								userEmai: isUsers,
 								userList: temps
 							},
 							success: function(data){
 								alert("Sent: " + tempList.length + " -- Received: " + JSON.stringify(data));
-								var isUsers = window.localStorage.getItem("BThereEmail");
 								var interval = setInterval(function(){
 									checkDatabase();
 								}, 300);
