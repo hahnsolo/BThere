@@ -32,8 +32,6 @@ function onDeviceReady() {
                     locArr: list
                 },
                 success: function (data) {
-					alert(JSON.parse(data));
-					
 					var userList = JSON.parse(data);
 					$("#selectUser1").click(function(){
 						chooseMeet("yes");
