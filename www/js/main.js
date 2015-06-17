@@ -17,7 +17,6 @@ function onDeviceReady() {
 
     }
     function stopScanSuccess() {
-        //var jsonString = JSON.stringify(list);
         email = window.localStorage.getItem("BThereEmail");
 		
 		/* TEST CODE */
@@ -33,13 +32,9 @@ function onDeviceReady() {
                     locArr: list
                 },
                 success: function (data) {
-					/*	TEST CODE */
-					var userList = JSON.parse(data);
+					alert
 					/*
-					for (var i = 0; i < userList.length; i++){
-						alert(userList[i][0] + " -- " + userList[i][1] + " -- " + userList[i][2]);
-					}
-					*/
+					var userList = JSON.parse(data);
 					$("#selectUser1").click(function(){
 						chooseMeet("yes");
 					});
@@ -53,7 +48,7 @@ function onDeviceReady() {
 					var i = 0;
 					
 					display();
-					
+					*/
 					//Display the data to the user.
 					function display() {
 						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
