@@ -32,7 +32,7 @@ function onDeviceReady() {
                     locArr: list
                 },
                 success: function (data) {
-					alert
+					alert(JSON.parse(data));
 					/*
 					var userList = JSON.parse(data);
 					$("#selectUser1").click(function(){
