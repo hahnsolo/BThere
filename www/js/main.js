@@ -212,7 +212,7 @@ function onDeviceReady() {
 			});
 		}
 		else{
-			alert("error");
+			alert("signup error");
 		}
 		return false;
     });
