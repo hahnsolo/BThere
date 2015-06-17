@@ -33,7 +33,7 @@ function onDeviceReady() {
                 },
                 success: function (data) {
 					alert(JSON.parse(data));
-					/*
+					
 					var userList = JSON.parse(data);
 					$("#selectUser1").click(function(){
 						chooseMeet("yes");
@@ -48,7 +48,7 @@ function onDeviceReady() {
 					var i = 0;
 					
 					display();
-					*/
+					
 					//Display the data to the user.
 					function display() {
 						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
