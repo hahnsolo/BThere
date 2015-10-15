@@ -1,230 +1,197 @@
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    alert("Hi, I am an alert");
-    var list,
-    kills,
-    count = 0,
-    email = "",
-    password = "";
-    bluetoothle.initialize(initializeSuccess, initializeError, {
-        "request": true,
-        "statusReceiver": false
-    });
-    function initializeSuccess() {
-
-    }
-    function initializeError() {
-
-    }
-    function stopScanSuccess() {
-        email = window.localStorage.getItem("BThereEmail");
-		
-		/* TEST CODE */
-		list = "CoffeeLoft";
-		
-        if (list == "CoffeeLoft") {
-            $.ajax({
-                type: "POST",
-                async: "true",
-                url: "http://www.greenseedmusic.com/btherecheckin.php",
-                data: {
-                    email: email,
-                    locArr: list
-                },
-                success: function (data) {
-					var userList = JSON.parse(data);
-					$("#selectUser1").click(function(){
-						chooseMeet("yes");
-					});
-					$("#selectUser2").click(function(){
-						chooseMeet("no");
-					});
-					(document.getElementById("checkin")).style.display = "none";
-					(document.getElementById("userSelection")).style.display = "block";
-					
-					var tempList = new Array();
-					var i = 0;
-					
-					display();
-					
-					//Display the data to the user.
-					function display() {
-						$("#uListPos").html("Number: " + (i+1) + "/" + (userList.length));
-						$("#uListName").html("User: " + userList[i][1]);
-						$("#uListFact").html("Fact:<br>" + userList[i][2]);
-					}
-					
-					//Push the ID of the user into the table if needed.
-					function chooseMeet(ans){
-						if (ans === "yes"){
-							tempList.push(userList[i][0]);
-						}
-						i++;
-						if (i >= userList.length){
-							complete();
-						}
-						else{
-							display();
-						}
-					}
-					
-					//The function is complete.
-					function complete(){
-						(document.getElementById("userSelection")).style.display = "none";
-						var isUsers = JSON.stringify(window.localStorage.getItem("BThereEmail"));
-						var temps = JSON.stringify(tempList);
-						$.ajax({
-							type: "POST",
-							async: "true",
-							url: "http://www.greenseedmusic.com/btheremeetup.php",
-							data: {
-								userEmai: isUsers,
-								userList: temps
-							},
-							success: function(data){
-								alert("WORKS!");
-								alert(JSON.parse(data));
-								//OMITTED UNTIL TESTING COMPLETE
-								/*
-								var interval = setInterval(function(){
-									checkDatabase();
-								}, 300);
-								function checkDatabase(){
-									$.ajax({
-										type: "POST",
-										async: "true",
-										url: "http://www.greenseedmusic.com/btherecheckmeet.php",
-										data: {
-											userEmail: isUsers
-										},
-										success: function(data){
-											var tempData = JSON.parse(data);
-											alert(tempData);
-											if (tempData != "noone"){
-												alert(isUsers + " -- " + tempData);
-												clearInterval(interval);
-											}
-										},
-										error: function(data){
-											alert("ERROR in USERINTERVAL");
-										}
-									});
-								}
-								*/
-							},
-							error: function(data){
-								alert("ERROR");
-								alert(JSON.parse(data));
-							}
-						});
-					}
-					
-				},
-                error: function (data) {
-                    alert("Error");
-                }
-            });
-        } else {
-            alert("You may only use this application from the Coffee Loft.");
-            $("#checkin").text("Check-in");
-            document.getElementById("checkin").disabled = false;
-        }
-    }
-    function stopScanError() {
-
-    }
-    function startScanSuccess(obj) {
-        $("#checkin").text("Loading...");
-        document.getElementById("checkin").disabled = true;
-        myVar = setTimeout(function () {
-            clearTimeout(kills);
-            bluetoothle.stopScan(stopScanSuccess, stopScanError)
-        }, 6000);
-        if (obj.name == "CoffeeLoft" && count < 1) {
-            list = obj.name;
-            count++;
-        }
-    }
-    function startScanError() {
-
-    }
-    function joinClick() {
-        (document.getElementById("buttons")).style.display = "none";
-        (document.getElementById("signupformsection")).style.display = "block";
-    }
-    function checkinClick() {
-
-        kills = setTimeout(function () {
-            bluetoothle.startScan(startScanSuccess, startScanError, {
-                "serviceUuids": []
-            });
-        }, 500);
-    }
-    
-    document.getElementById("join").addEventListener("click", joinClick);
-    document.getElementById("signin").addEventListener("click", joinClick);
-    document.getElementById("checkin").addEventListener("click", checkinClick);
-    
-    if (window.localStorage.getItem("BThere") == "true") {
-        email = window.localStorage.getItem("BThereEmail");
-        password = window.localStorage.getItem("BTherePassword");
-        $.ajax({
-            type: "POST",
-            async: "true",
-            url: "http://www.greenseedmusic.com/btherelogin.php",
-            data: {
-                email: email,
-                password: password
-            },
-            success: function (data) {
-                (document.getElementById("checkinsection")).style.display = "block";
-            },
-            error: function (data) {}
-        });
-    } else {
-        (document.getElementById("buttons")).style.display = "block";
-    }
-    $('#Signup').submit(function () {
-		if (isValidForm() === true){
-			var myDat = $(this).serialize();
-			$.ajax({
-				type: "POST",
-				url: "http://www.greenseedmusic.com/bthereinsert.php",
-				data: myDat,
-				success: function(data){
-					alert("input successful:" + data);
-					email = $("#signupEmail").val();
-					password = $("#signupPassword").val();
-					window.localStorage.setItem("BThere", "true");
-					window.localStorage.setItem("BThereEmail", email);
-					window.localStorage.setItem("BTherePassword", password);
-					$("#signupformsection").hide();
-					$("#checkinsection").show();
-				},
-				error: function(){
-					alert("ERROR");
-				},
-				fail: function(){
-					alert("broke");
-				}
-			});
+function check() {
+    if((window.localStorage.getItem("preWorkout") !== null) && (window.localStorage.getItem("postWorkout") === null)){
+		if(checkTime()){
+			hideSelect("pwt");
+			$("#awt").css("display", "block");
+			$("#postButtons").css("display", "block");
 		}
 		else{
-			alert("signup error");
+			window.localStorage.removeItem("preWorkout");
+			location.reload();
 		}
-		return false;
-    });
+    }
+	else if((window.localStorage.getItem("preWorkout") === null) && (window.localStorage.getItem("postWorkout") !== null)){
+		hideSelect("awt");
+		$("#pwt").css("display", "block");
+		$("#preButtons").css("display", "block");
+	}
+    else if((window.localStorage.getItem("preWorkout") !== null) && (window.localStorage.getItem("postWorkout") !== null)){
+		hideSelect("pwt");
+		hideSelect("awt");
+	}
+	else{
+        $("#pwt").css("display", "block");
+		$("#preButtons").css("display", "block");
+		$("#awt").css("display", "block");
+		$("#postButtons").css("display", "block");
+    }
 }
 
-/* Validation */
-function isValidForm(){
-	var email = $("#signupEmail").val();
-	var pass = $("#signupPassword").val();
-	var name = $("#signupName").val();
-	var fact = $("#signupFunFact").val();
-	//Data invalid if there is only spaces in any field.
-	if ((email.trim() === "") || (pass.trim() === "") || (name.trim() === "") || (fact.trim() === "")){
+function hideSelect(id){
+	$("#" + id).hide();
+	$("#" + id).css("color", "green");
+	$("#" + id).html("Workout Mood Recorded!!!");
+	var imgValue = "";
+	if(id === "pwt"){
+		$("[id^='pw']:not(#pwt)").fadeOut();
+		imgValue = JSON.parse(window.localStorage.getItem("preWorkout"))[0];
+		$("#preButtons").append("<img style='margin-left:auto; margin-right:auto; display:block;' id='pFinal' src='img/" + imgValue + ".PNG' />");
+		$("#preButtons").append("<button type='button' class='btn-primary act-button' onclick='pRetry();'>Re-enter post-workout mood?</button>");
+		$("#pwt").show("slow");
+		$("#preButtons").show("slow");
+	}
+	else if(id === "awt"){
+		$("[id^='aw']:not(#awt)").fadeOut();
+		imgValue = JSON.parse(window.localStorage.getItem("postWorkout"))[0];
+		$("#postButtons").append('<img style="margin-left:auto; margin-right:auto; display:block;" id="aFinal" src="img/' + imgValue + '.PNG" />');
+		$("#postButtons").append("<button type='button' class='btn-primary act-button' onclick='aRetry();'>Re-enter post-workout mood?</button>");
+		$("#awt").show("slow");
+		$("#postButtons").show("slow");
+	}
+	$("#grayOut").removeClass("gray-out");
+}
+
+function preCalc(elmnt, value) {
+	if(window.localStorage.getItem("preWorkout") === null){
+		var data = [];
+		$("#pwt").hide();
+		$("[id^='pw']").fadeOut();
+		$("#pwt").css('color', 'green');
+		$("#pwt").html('Workout Mood Recorded!!!');
+		data.push(value);
+		$("#preButtons").append("<img style='margin-left:auto; margin-right:auto; display:block;' id='pFinal' src='img/" + value + ".PNG' />");
+		var time = grabTime();
+		data.push(time);
+		window.localStorage.setItem("preWorkout", JSON.stringify(data));
+		$("#preButtons").append("<button type='button'" +  
+			"class='btn-primary act-button' onclick='pRetry();'>" + 
+			"Re-enter pre-workout mood?</button>");
+		$("#pwt").show("slow");
+		$("#grayOut").removeClass("gray-out");
+	}
+}
+
+function pRetry(){
+	$("#pwt").hide();
+	$("#preButtons button").fadeOut();
+	$("#pFinal").fadeOut();
+	$("#pwt").css("color", "");
+	$("#pwt").html("Pre-Workout Mood");
+	$("#preButtons button").remove();
+	$("#pFinal").remove();
+	window.localStorage.removeItem("preWorkout");
+	$("#pwt").show("slow");
+	$("[id^='pw']").show("slow");
+	aRetry();
+	if(window.localStorage.getItem("postWorkout") === null){
+		$("#grayOut").addClass("gray-out");
+	}
+}
+
+function postCalc(elmnt, value){
+	if((window.localStorage.getItem("postWorkout") === null) && (window.localStorage.getItem("preWorkout") !== null)){
+		var data = [];
+		$("#awt").hide();
+		$("[id^='aw']").fadeOut();
+		$("#awt").css('color', 'green');
+		$("#awt").html('Workout Mood Recorded!!!');
+		data.push(value);
+		$("#postButtons").append("<img style='margin-left:auto; margin-right:auto; display:block;' id='aFinal' src='img/" + value + ".PNG' />");
+		var time = grabTime();
+		data.push(time);
+		window.localStorage.setItem("postWorkout", JSON.stringify(data));
+		$("#postButtons").append("<button type='button' class='btn-primary act-button' onclick='aRetry();'>Re-enter post-workout mood?</button>");
+		$("#awt").show("slow");
+	}
+}
+
+function aRetry(){
+	$("#awt").hide();
+	$("#postButtons button").fadeOut();
+	$("#aFinal").fadeOut();
+	$("#awt").css("color", "");
+	$("#awt").html("Post-Workout Mood");
+	$("#postButtons button").remove();
+	$("#aFinal").remove();
+	window.localStorage.removeItem("postWorkout");
+	$("#awt").show("slow");
+	$("[id^='aw']").show("slow");
+}
+
+function submitMoods(){
+	$("#subButton").attr("disabled", true);
+	if((window.localStorage.getItem("preWorkout") !== null) && (window.localStorage.getItem("postWorkout") !== null)){
+		var preDat = JSON.parse(window.localStorage.getItem("preWorkout"));
+		var posDat = JSON.parse(window.localStorage.getItem("postWorkout"));
+		/*
+		preWork: window.localStorage.getItem("preWorkout"),
+					posWork: window.localStorage.getItem("postWorkout")
+					*/
+		if((preDat.length == 2) && (posDat.length == 2)){
+			var a = "a";
+			$.ajax({
+				type: "POST",
+				async: "true",
+				url: "http://greenseedmusic.com/btherelogin.php",
+				data: {
+					preWork: a
+				},
+				success: function(data){
+					alert("S: " + data);
+					window.localStorage.removeItem("preWorkout");
+					window.localStorage.removeItem("postWorkout");
+					location.reload();
+				},
+				error: function(e){
+					alert("E: " + e.status + " - " + e.responseText);
+				}
+			});
+			/*
+			*	Put into "Success" once PHP complete...
+			*/
+		}
+	}
+	else{
+		alert("Please ensure all inputs - moods - have been input, then hit the button again.");
+	}
+	$("#subButton").attr("disabled", false);
+}
+
+function hideButtons(type){
+	$("img[id^='" + type + "']").css("display", "none");
+}
+
+function showButtons(type){
+	$("img[id^='" + type + "']").css("display", "block");
+}
+
+function grabTime(){
+	var date = new Date(),
+		hour = date.getHours(),
+		minu = date.getMinutes(),
+		seco = date.getSeconds(),
+		time = hour + ":" + minu + ":" + seco;
+	return time;
+}
+
+function checkTime(){
+	var storTime = JSON.parse(window.localStorage.getItem("preWorkout"))[1];
+	var time1 = getTimeInSec(storTime);
+	var time2 = getTimeInSec(grabTime());
+	var tDiff = time2 - time1;
+	if(tDiff > (3600 * 3)){
 		return false;
 	}
 	return true;
 }
+
+function getTimeInSec(time){
+	var arr = time.split(":");
+	var timeInSec = (arr[0] * 3600) + (arr[1] * 60) + (arr[2]);
+	return timeInSec;
+}
+
+/*	Defunct Code */
+/*
+$(".col-xs-3").append("<img src='img/gray.png' class='img-circle' style='opacity:0.5; position:absolute; width:36px; top:0px;'>");
+*/
