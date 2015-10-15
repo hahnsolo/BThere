@@ -1,8 +1,7 @@
 function check() {
 	$.ajax({
 		type: "POST",
-		async: "true",
-		url: "http://greenseedmusic.com/betherelogin.php",
+		url: "http://mobile.sheridanc.on.ca/~mccallry/BTF_Enter.php",
 		data: {
 			myDat: "Ayy"
 		},
