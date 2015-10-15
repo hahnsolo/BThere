@@ -1,4 +1,18 @@
 function check() {
+	$.ajax({
+		type: "POST",
+		async: "true",
+		url: "http://greenseedmusic.com/betherelogin.php",
+		data: {
+			myDat: "Ayy"
+		},
+		success: function(data){
+			alert("working");
+		},
+		error: function(e){
+			alert("still error");
+		}
+	});
     if((window.localStorage.getItem("preWorkout") !== null) && (window.localStorage.getItem("postWorkout") === null)){
 		if(checkTime()){
 			hideSelect("pwt");
