@@ -1,15 +1,15 @@
 function check() {
 	$.ajax({
-		type: "POST",
-		url: "http://mobile.sheridanc.on.ca/~mccallry/BTF_Enter.php",
+		type: 'post',
+		url: 'http://mobile.sheridanc.on.ca/~mccallry/BTF_Enter.php',
 		data: {
-			myDat: "Ayy"
+			myDat: 'Ay'
 		},
 		success: function(data){
 			alert("working");
 		},
-		error: function(e){
-			alert("still error");
+		error: function(xhr, e){
+			alert(e);
 		}
 	});
     if((window.localStorage.getItem("preWorkout") !== null) && (window.localStorage.getItem("postWorkout") === null)){
